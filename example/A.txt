@@ -1,0 +1,9 @@
+Volume
+0 0
+32 0 rightexp
+48 -20
+
+Equalizer
+0 0 -12 0 leftexp
+8 0 0 12 linear
+16 0 0 0

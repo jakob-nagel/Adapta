@@ -1,0 +1,5 @@
+Tempo
+0 "A with space" - linear
+32 B 140 leftexp
+48 B -10%
+52 B -

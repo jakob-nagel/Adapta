@@ -1,0 +1,65 @@
+{
+    "BeatProcessor": {
+        "beats_per_bar": 4,
+        "transition_lambda": 400
+    },
+    "Buffer": {
+        "bit_width": "<Stream.bit_width>",
+        "size": 128,
+        "warnings": true
+    },
+    "Cursor": {
+        "color": "b",
+        "width": 2
+    },
+    "Mix": {
+        "sample_rate": "<Stream.sample_rate>",
+        "bit_width": "<Stream.bit_width>",
+        "num_channels": "<Stream.num_channels>",
+        "use_resampling": true
+    },
+    "Player": {
+        "sample_rate": "<Stream.sample_rate>",
+        "num_channels": "<Stream.num_channels>",
+        "jump_to": "nearest",
+        "update_freq": 30
+    },
+    "SpecialItem": {
+        "resolution": 2,
+        "ratio": 2,
+        "depth": 15
+    },
+    "Stream": {
+        "sample_rate": 44100,
+        "bit_width": 16,
+        "num_channels": 2
+    },
+    "TimeAxis": {
+        "in_minutes": false
+    },
+    "Track": {
+        "display_automation": false
+    },
+    "TrackItem": {
+        "outer_scale": 95,
+        "inner_scale": 95,
+        "antialiasing": true
+    },
+    "Window": {
+        "button_size": [
+            64,
+            32
+        ],
+        "play_button_size": [
+            256,
+            32
+        ],
+        "icon_size": 32,
+        "play_icon_size": 32,
+        "start_with_size": [
+            1200,
+            700
+        ],
+        "start_maximized": false
+    }
+}

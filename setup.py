@@ -1,0 +1,36 @@
+from setuptools import find_packages, setup
+
+setup(
+    name="Adapta",
+    version="0.9.0",
+    packages=find_packages(),
+    package_data={'': ['*.json', '*.svg']},
+    entry_points={'gui_scripts': ['adapta = adapta.__main__:main']},
+    setup_requires=['numpy>=1.16.4',
+                    'scipy>=1.3.0',
+                    'cython>=0.29.10',
+                    'madmom>=0.16.1',
+                    'pyaudio>=0.2.11',
+                    'pyrubberband>=0.3.0',
+                    'pyqt5>=5.12.2',
+                    'pyqtgraph>=0.10.0'],
+    install_requires=['numpy>=1.16.4',
+                      'scipy>=1.3.0',
+                      'cython>=0.29.10',
+                      'madmom>=0.16.1',
+                      'pyaudio>=0.2.11',
+                      'pyrubberband>=0.3.0',
+                      'pyqt5>=5.12.2',
+                      'pyqtgraph>=0.10.0'],
+    author="Jakob Nagel",
+    author_email="jakob.nagel@rwth-aachen.de",
+    description="Advanced Audio Player with Tempo Adjustment",
+    license="GNU General Public License",
+    keywords="audio player tempo adjustment time stretching resampling",
+    url="https://git.rwth-aachen.de/jakob.nagel/adapta",
+    project_urls={
+        "Bug Tracker": "https://git.rwth-aachen.de/jakob.nagel/adapta",
+        "Documentation": "https://git.rwth-aachen.de/jakob.nagel/adapta",
+        "Source Code": "https://git.rwth-aachen.de/jakob.nagel/adapta",
+    }
+)

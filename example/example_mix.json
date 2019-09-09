@@ -1,0 +1,23 @@
+{
+    "automation": "automation.txt",
+    "tracks": {
+        "A with space": {
+            "audio": "pntg010-02-ludwig_coenen-kula_lumpur.mp3",
+            "beats": "pntg010-02-ludwig_coenen-kula_lumpur.beats.csv",
+            "automation": "A.txt",
+            "start": "5:59.150",
+            "length": 48,
+            "position": 0,
+            "volume": -6
+        },
+        "B": {
+            "audio": "pntg010-01-ludwig_coenen-jiggy_grain.mp3",
+            "beats": "pntg010-01-ludwig_coenen-jiggy_grain.beats.csv",
+            "automation": "B.txt",
+            "start": 14.1,
+            "length": 48,
+            "position": 16,
+            "volume": -6
+        }
+    }
+}
