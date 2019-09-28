@@ -127,7 +127,10 @@ class Mix(Threadable):
     def num_segments(self):
         """Total number of segments of the mix."""
         if hasattr(self, '_times'):
-            return self._times.size - 1
+            candidates = [track.position for name, track in self._todo
+                          if not track.initialized]
+            candidates.append(self._times.size - 1)
+            return min(candidates)
         return 0
 
     def length(self, start, stop=None):
