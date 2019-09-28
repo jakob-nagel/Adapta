@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="Adapta",
-    version="0.9.0",
+    version="1.0.0",
     packages=find_packages(),
     package_data={'': ['*.json', '*.svg']},
     entry_points={'gui_scripts': ['adapta = adapta.__main__:main']},
