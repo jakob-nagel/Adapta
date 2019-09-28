@@ -39,6 +39,4 @@ class Notifier(Threadable):
     def run(self):
         while True:
             name, beats = self._results.get()
-            print('got something')
             self.sig_send.emit(name, beats)
-            print('signal sent')
