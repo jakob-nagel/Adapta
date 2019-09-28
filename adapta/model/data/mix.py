@@ -5,8 +5,8 @@ import os
 from pyqtgraph.Qt import QtCore
 
 from adapta.model.data.audio import Audio
-from adapta.model.data.automation import parse
-from adapta.model.data.tempo import Tempo
+from adapta.model.automation.automation import parse
+from adapta.model.automation.tempo import Tempo
 from adapta.model.data.track import Track
 from adapta.util.functions import round_, int_
 from adapta.util.settings import use_settings

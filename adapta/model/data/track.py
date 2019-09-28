@@ -2,9 +2,9 @@ import numpy as np
 import os
 
 from adapta.model.data.audio import Audio
-from adapta.model.data.automation import parse
-from adapta.model.data.equalizer import Equalizer
-from adapta.model.data.volume import Volume
+from adapta.model.automation.automation import parse
+from adapta.model.automation.equalizer import Equalizer
+from adapta.model.automation.volume import Volume
 from adapta.util.functions import (
     load_beats, round_, time_to_bpm, time_to_seconds)
 from adapta.util.settings import use_settings

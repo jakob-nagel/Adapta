@@ -1,6 +1,6 @@
 import numpy as np
 
-from adapta.model.data.automation import PerSampleAutomation
+from adapta.model.automation.automation import PerSampleAutomation
 from adapta.util.functions import db_to_ratio
 
 

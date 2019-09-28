@@ -3,7 +3,7 @@ import numpy as np
 from scipy import signal
 
 from adapta.model.data.audio import Audio
-from adapta.model.data.automation import Automation
+from adapta.model.automation.automation import Automation
 from adapta.util.functions import db_to_ratio
 
 

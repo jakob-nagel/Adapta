@@ -1,6 +1,6 @@
 import numpy as np
 
-from adapta.model.data.automation import Automation
+from adapta.model.automation.automation import Automation
 from adapta.util.functions import bpm_to_time
 
 
