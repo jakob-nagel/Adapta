@@ -1,7 +1,7 @@
 from madmom.audio import signal
 import numpy as np
 
-from adapta.util.functions import int_, intmax, round_
+from adapta.util import int_, intmax, round_
 
 
 class Audio(signal.Signal):

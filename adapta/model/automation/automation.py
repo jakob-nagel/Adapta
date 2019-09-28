@@ -2,7 +2,7 @@ import copy
 import csv
 import numpy as np
 
-from adapta.util.functions import expspace, isarray
+from adapta.util import expspace, isarray
 
 
 def parse(path):

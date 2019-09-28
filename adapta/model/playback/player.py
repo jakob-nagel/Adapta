@@ -2,11 +2,8 @@ import enum
 import numpy as np
 from pyqtgraph.Qt import QtCore
 
-from adapta.model.playback.buffer import Buffer
-from adapta.util.functions import round_
-from adapta.util.settings import use_settings
-from adapta.util.singleton import singleton
-from adapta.util.threadable import Threadable
+from adapta.model.playback import Buffer
+from adapta.util import round_, singleton, use_settings, Threadable
 
 
 class State(enum.Enum):

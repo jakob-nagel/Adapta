@@ -2,10 +2,8 @@ import numpy as np
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtCore
 
-from adapta.view.visual.cursor import Cursor
-from adapta.view.visual.timeaxis import TimeAxis
-from adapta.view.visual.trackitem import TrackItem
-from adapta.util.singleton import singleton
+from adapta.view.visual import Cursor, TimeAxis, TrackItem
+from adapta.util import singleton
 
 
 @singleton

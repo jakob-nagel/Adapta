@@ -2,7 +2,7 @@
 import pyqtgraph as pg
 # from pyqtgraph.Qt import QtCore
 
-from adapta.util.settings import use_settings
+from adapta.util import use_settings
 
 
 @use_settings

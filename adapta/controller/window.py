@@ -1,8 +1,7 @@
 import pkg_resources as pkg
 from pyqtgraph.Qt import QtCore, QtGui, QtWidgets
 
-from adapta.util.settings import use_settings
-from adapta.util.singleton import singleton
+from adapta.util import singleton, use_settings
 
 
 @singleton

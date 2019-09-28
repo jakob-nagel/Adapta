@@ -1,8 +1,8 @@
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtGui
 
-from adapta.util.settings import use_settings
-from adapta.view.visual.specialitem import SpecialItem
+from adapta.util import use_settings
+from adapta.view.visual import SpecialItem
 
 
 @use_settings

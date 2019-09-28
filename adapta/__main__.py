@@ -1,16 +1,14 @@
+from multiprocessing import Process, Queue
 import os
 from pyqtgraph.Qt import QtWidgets
 import sys
 
-from adapta.controller.window import Window
-from adapta.model.data.beatprocessor import BeatProcessor, Notifier
-from adapta.model.data.mix import Mix
-from adapta.model.playback.player import Player
-from adapta.util.settings import load
-from adapta.view.auditory.stream import Stream
-from adapta.view.visual.plot import Plot
-
-from multiprocessing import Process, Queue
+from adapta.controller import Window
+from adapta.model.data import BeatProcessor, Notifier, Mix
+from adapta.model.playback import Player
+from adapta.util import load
+from adapta.view.auditory import Stream
+from adapta.view.visual import Plot
 
 
 def connect(from_, to, adapter=None):

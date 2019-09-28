@@ -2,7 +2,7 @@ import math
 import numpy as np
 import pyqtgraph as pg
 
-from adapta.util.settings import use_settings
+from adapta.util import use_settings
 
 
 @use_settings

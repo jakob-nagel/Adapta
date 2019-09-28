@@ -1,7 +1,6 @@
 import pyqtgraph as pg
 
-from adapta.util.functions import seconds_to_time
-from adapta.util.settings import use_settings
+from adapta.util import seconds_to_time, use_settings
 
 
 @use_settings

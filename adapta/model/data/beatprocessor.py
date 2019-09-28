@@ -1,13 +1,8 @@
 from madmom.features import DBNDownBeatTrackingProcessor, RNNDownBeatProcessor
 from madmom.processors import SequentialProcessor
-
-from adapta.util.settings import use_settings
-from adapta.util.singleton import singleton
-from adapta.util.threadable import Threadable
-
-from threading import Thread
 from pyqtgraph.Qt import QtCore
-import time
+
+from adapta.util import use_settings, Threadable
 
 
 @use_settings
@@ -46,4 +41,4 @@ class Notifier(Threadable):
             name, beats = self._results.get()
             print('got something')
             self.sig_send.emit(name, beats)
-            print('sigal sent')
+            print('signal sent')

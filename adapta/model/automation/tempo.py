@@ -1,7 +1,7 @@
 import numpy as np
 
-from adapta.model.automation.automation import Automation
-from adapta.util.functions import bpm_to_time
+from adapta.model.automation import Automation
+from adapta.util import bpm_to_time
 
 
 class Tempo(Automation):

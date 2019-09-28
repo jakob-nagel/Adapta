@@ -1,9 +1,7 @@
 import pyaudio as pa
 from pyqtgraph.Qt import QtCore
 
-from adapta.util.settings import use_settings
-from adapta.util.singleton import singleton
-from adapta.util.threadable import Threadable
+from adapta.util import singleton, use_settings, Threadable
 
 
 class Stream_(pa.Stream):

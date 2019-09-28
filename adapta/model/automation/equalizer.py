@@ -2,9 +2,9 @@ import math
 import numpy as np
 from scipy import signal
 
-from adapta.model.data.audio import Audio
-from adapta.model.automation.automation import Automation
-from adapta.util.functions import db_to_ratio
+from adapta.model.data import Audio
+from adapta.model.automation import Automation
+from adapta.util import db_to_ratio
 
 
 class Equalizer(Automation):

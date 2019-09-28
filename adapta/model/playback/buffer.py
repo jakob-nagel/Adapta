@@ -1,9 +1,7 @@
 import numpy as np
-from pyqtgraph.Qt import QtCore
 from warnings import warn
 
-from adapta.util.functions import int_, round_
-from adapta.util.settings import use_settings
+from adapta.util import int_, round_, use_settings
 
 
 @use_settings
