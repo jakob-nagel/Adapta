@@ -72,6 +72,9 @@ class Automation:
         self._parent = parent
 
     def __call__(self, params):
+        if len(params) == 0:
+            return self.process(np.empty(0))
+
         nodes = []
         for param in params:
             index = int(param[0])

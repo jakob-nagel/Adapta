@@ -50,9 +50,7 @@ class Mix(Threadable):
         with open(path) as jsonfile:
             mix = json.load(jsonfile)
 
-        # store previous working directory
-        # and change so that audio file paths can be relative to path
-        prev_path = os.getcwd()
+        # allow file paths relative to mix file
         os.chdir(os.path.dirname(os.path.abspath(path)))
 
         # update the tracks of the mix
@@ -70,9 +68,6 @@ class Mix(Threadable):
 
         self._automation = parse(mix['automation'])
         self._tempo = Tempo(self)
-
-        # restore previous working directory
-        os.chdir(prev_path)
 
         self.sig_loaded.emit(self)
         self.update()
@@ -115,7 +110,8 @@ class Mix(Threadable):
     @property
     def tracks(self):
         """Dictionary holding references to the tracks of the mix."""
-        return {name: track for name, track in self._tracks.items() if track.initialized}
+        return {name: track for name, track in self._tracks.items() if
+                track.initialized}
 
     @property
     def times(self):
