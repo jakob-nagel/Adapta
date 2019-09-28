@@ -46,13 +46,12 @@ class Plot(pg.PlotWidget):
         # clear the currently depicted plot
         self.clear()
 
-        tracks = [track for track in mix.tracks.items() if track[1].position +
-                  track[1].num_segments <= mix.num_segments]
-        if len(tracks) > 0:
+        if len(mix.tracks) > 0:
             # get maximum absolute sample value for normalization
-            max_value = max(np.abs(track[1].audio).max() for track in tracks)
+            max_value = max(np.abs(track.audio).max()
+                            for track in mix.tracks.values())
 
-            tracks = sorted(tracks, key=lambda x: x[1].position)
+            tracks = sorted(mix.tracks.items(), key=lambda x: x[1].position)
 
             decks = []
             for name, track in tracks:
@@ -81,7 +80,7 @@ class Plot(pg.PlotWidget):
                     sample_rates[start:stop] = 1 / sample_rate
                 x = np.cumsum(sample_rates)
                 # draw the track
-                TrackItem(self, x + x_offset, y, deck, name)
+                TrackItem(self, x + x_offset, y[:x.size], deck, name)
 
             # add the cursor
             self._cursor = Cursor(self, mix.times[-1])
