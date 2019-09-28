@@ -46,12 +46,14 @@ class Plot(pg.PlotWidget):
         # clear the currently depicted plot
         self.clear()
 
-        if len(mix.tracks) > 0:
+        tracks = [(name, track) for name, track in mix.tracks.items()
+                  if track.position + track.num_segments <= mix.times.size - 1]
+        if len(tracks) > 0:
             # get maximum absolute sample value for normalization
             max_value = max(np.abs(track.audio).max()
-                            for track in mix.tracks.values())
+                            for name, track in tracks)
 
-            tracks = sorted(mix.tracks.items(), key=lambda x: x[1].position)
+            tracks.sort(key=lambda x: x[1].position)
 
             decks = []
             for name, track in tracks:
