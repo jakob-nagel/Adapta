@@ -8,6 +8,10 @@ from adapta.util import db_to_ratio
 
 
 class Equalizer(Automation):
+    """Class for interpreting equalization specification.
+
+    """
+
     def __init__(self, parent):
         super().__init__(parent)
         self.f_c = [1000, 8000]

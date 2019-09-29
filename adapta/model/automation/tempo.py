@@ -5,6 +5,10 @@ from adapta.util import bpm_to_time
 
 
 class Tempo(Automation):
+    """Class for interpreting tempo specification.
+
+    """
+
     class Node(Automation.Node):
         @property
         def source_bpm(self):

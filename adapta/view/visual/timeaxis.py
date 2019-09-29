@@ -5,6 +5,10 @@ from adapta.util import seconds_to_time, use_settings
 
 @use_settings
 class TimeAxis(pg.AxisItem):
+    """Custom plot time axis to offer the <minutes:seconds> label format.
+
+    """
+
     """ Settings """
     # label time in <minutes:seconds> format
     in_minutes = bool

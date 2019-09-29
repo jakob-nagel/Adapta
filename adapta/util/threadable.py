@@ -2,6 +2,10 @@ from pyqtgraph.Qt import QtCore
 
 
 class Threadable(QtCore.QObject):
+    """Base class providing a simple multithreading interface.
+
+    """
+
     def __init__(self, *args):
         super().__init__()
         self._mutex = QtCore.QMutex(QtCore.QMutex.Recursive)

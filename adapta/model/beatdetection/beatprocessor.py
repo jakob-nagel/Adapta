@@ -6,6 +6,10 @@ from adapta.util import use_settings
 
 @use_settings
 class BeatProcessor(SequentialProcessor):
+    """Class estimating beat positions of given audio files.
+
+    """
+
     """ Settings """
     # assumed number of beats per bar
     beats_per_bar = int

@@ -16,6 +16,11 @@ class State(enum.Enum):
 @singleton
 @use_settings
 class Player(Threadable):
+    """Class controlling the mix playback. Reponsible for requesting mix
+    samples to be computed and passing them to an output unit.
+
+    """
+
     """ Settings """
     # output sample rate in Hz
     sample_rate = int

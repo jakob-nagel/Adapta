@@ -137,11 +137,6 @@ class Window(QtWidgets.QMainWindow):
     def show_open_dialog(self):
         """Opens a file dialog to load a file to update the mix with.
 
-        Parameters
-        ----------
-        parent : :class:`QWidget`
-            The parent widget of the dialog.
-
         """
 
         # open the file dialog

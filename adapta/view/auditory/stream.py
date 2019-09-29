@@ -5,6 +5,10 @@ from adapta.util import singleton, use_settings, Threadable
 
 
 class Stream_(pa.Stream):
+    """Class providing the output stream for the playback of the mix.
+
+    """
+
     """ Settings """
     # output sample rate in Hz
     sample_rate = int
@@ -39,6 +43,11 @@ class Stream_(pa.Stream):
 @singleton
 @use_settings
 class Stream(Threadable, Stream_):
+    """Helper class making the Stream_ class a QObject and threadable.
+
+    """
+
+    """ Signals """
     sig_request = QtCore.Signal()
 
     def play(self, audio):

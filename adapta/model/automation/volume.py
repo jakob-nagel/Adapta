@@ -5,6 +5,10 @@ from adapta.util import db_to_ratio
 
 
 class Volume(PerSampleAutomation):
+    """Class for interpreting volume specification.
+
+    """
+
     def argtypes(self):
         return float
 

@@ -28,7 +28,15 @@ def parse(path):
 
 
 class Automation:
+    """Abstract base class for audio effect automation.
+
+    """
+
     class Node:
+        """Base class for audio effect specification mapping.
+
+        """
+
         def __init__(self, parent, index, transition, *args):
             self._parent = parent
             self._index = index

@@ -10,11 +10,6 @@ from adapta.util import singleton
 class Plot(pg.PlotWidget):
     """Class providing the plot of the audio data for the app.
 
-    Parameters
-    ----------
-    parent : :class:`QGraphicsItem`
-        The parent widget of the plot.
-
     """
 
     """ Signals """
