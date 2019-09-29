@@ -59,7 +59,6 @@ def main(*args):
     # Mix
     connect(Mix().sig_loaded, Window().enable_controls)
     connect(Mix().sig_loaded, Player().update)
-    # connect(Mix().sig_loaded, Plot().update)
     connect(Mix().sig_segment, Player().receive)
 
     connect(Mix().sig_request_beats, todo.put_nowait)
