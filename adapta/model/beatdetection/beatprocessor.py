@@ -28,7 +28,5 @@ class BeatProcessor(SequentialProcessor):
         while True:
             tasks = self._todo.get()
             for name, audio in tasks:
-                print('job started')
                 beats = self.process(audio)
                 self._results.put((name, beats))
-                print('job done')
