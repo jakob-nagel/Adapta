@@ -29,6 +29,8 @@ class Track:
 
     """
 
+    """ Settings """
+    # display audio with effects applied
     display_automation = bool
 
     def __init__(self, mix, params):

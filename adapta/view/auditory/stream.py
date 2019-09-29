@@ -5,8 +5,12 @@ from adapta.util import singleton, use_settings, Threadable
 
 
 class Stream_(pa.Stream):
+    """ Settings """
+    # output sample rate in Hz
     sample_rate = int
+    # output bit width in bit
     bit_width = int
+    # number of output channels
     num_channels = int
 
     _FORMAT = {8: pa.paInt8, 16: pa.paInt16, 24: pa.paInt24, 32: pa.paInt32}

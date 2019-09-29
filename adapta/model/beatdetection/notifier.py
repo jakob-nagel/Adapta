@@ -4,6 +4,7 @@ from adapta.util import Threadable
 
 
 class Notifier(Threadable):
+    """ Signals """
     sig_send = QtCore.Signal(str, object)
 
     def __init__(self, results):

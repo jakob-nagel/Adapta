@@ -17,6 +17,7 @@ class Plot(pg.PlotWidget):
 
     """
 
+    """ Signals """
     sig_mouse_clicked = QtCore.Signal(float)
 
     def __init__(self):

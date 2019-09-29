@@ -16,11 +16,17 @@ class State(enum.Enum):
 @singleton
 @use_settings
 class Player(Threadable):
+    """ Settings """
+    # output sample rate in Hz
     sample_rate = int
+    # number of output channels
     num_channels = int
+    # jump to 'containing' or 'nearest' segment upon click on plot
     jump_to = str
+    # playback position update frequency in Hz
     update_freq = int
 
+    """ Signals """
     sig_request = QtCore.Signal(int)
     sig_play = QtCore.Signal(object)
     sig_state = QtCore.Signal(object)

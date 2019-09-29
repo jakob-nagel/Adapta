@@ -24,8 +24,12 @@ class TrackItem:
 
     """
 
+    """ Settings """
+    # ratio of item size to space between items in percent
     outer_scale = int
+    # ratio of waveform size to item size in percent
     inner_scale = int
+    # enable waveform antialiasing
     antialiasing = bool
 
     def __init__(self, plot, x, y, deck, name=None):

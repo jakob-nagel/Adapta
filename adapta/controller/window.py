@@ -11,13 +11,21 @@ class Window(QtWidgets.QMainWindow):
 
     """
 
+    """ Settings """
+    # size of all buttons but the play button
     button_size = tuple
+    # size of play butotn
     play_button_size = tuple
+    # size of all icons but the play icon
     icon_size = int
+    # size of play icon
     play_icon_size = int
+    # initial window size
     start_with_size = tuple
+    # initial window maximized
     start_maximized = bool
 
+    """ Signals """
     sig_open = QtCore.Signal()
     sig_render = QtCore.Signal()
     sig_exit = QtCore.Signal()

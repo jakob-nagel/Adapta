@@ -21,10 +21,17 @@ class Mix(Threadable):
 
     """
 
+    """ Settings """
+    # mix sample rate in Hz
     sample_rate = int
+    # mix bit width in bit
     bit_width = int
+    # number of mix channels
     num_channels = int
+    # use resampling for time stretching
+    use_resampling = bool
 
+    """ Signals """
     sig_loaded = QtCore.Signal(object)
     sig_updated = QtCore.Signal(object)
     sig_segment = QtCore.Signal(object)

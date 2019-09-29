@@ -6,6 +6,12 @@ from adapta.util import use_settings
 
 @use_settings
 class BeatProcessor(SequentialProcessor):
+    """ Settings """
+    # assumed number of beats per bar
+    beats_per_bar = int
+    # constant tempo likelihood
+    transition_lambda = 400
+
     def __init__(self, todo, results):
         preprocessor = RNNDownBeatProcessor()
         processor = DBNDownBeatTrackingProcessor(

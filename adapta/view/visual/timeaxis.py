@@ -5,6 +5,10 @@ from adapta.util import seconds_to_time, use_settings
 
 @use_settings
 class TimeAxis(pg.AxisItem):
+    """ Settings """
+    # label time in <minutes:seconds> format
+    in_minutes = bool
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setScale(2)

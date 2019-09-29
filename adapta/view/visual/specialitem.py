@@ -24,8 +24,12 @@ class SpecialItem(pg.PlotDataItem):
 
     """
 
-    resolution = int
+    """ Settings """
+    # number of samples per pixel
+    resolution = float
+    # frame size per downsampling step
     ratio = int
+    # number of downsampling steps
     depth = int
 
     def __init__(self, *args, **kwargs):

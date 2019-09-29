@@ -19,8 +19,12 @@ class Buffer:
 
     """
 
+    """ Settings """
+    # audio bit width in bit
     bit_width = int
+    # buffer capacity in MB
     size = int
+    # output warnings
     warnings = bool
 
     def __init__(self):
