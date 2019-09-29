@@ -1,10 +1,10 @@
 from multiprocessing import Process, Queue
-import os
 from pyqtgraph.Qt import QtWidgets
 import sys
 
 from adapta.controller import Window
-from adapta.model.data import BeatProcessor, Notifier, Mix
+from adapta.model.beatdetection import BeatProcessor, Notifier
+from adapta.model.data import Mix
 from adapta.model.playback import Player
 from adapta.util import load
 from adapta.view.auditory import Stream
@@ -24,9 +24,6 @@ def main(*args):
 
     if len(args) >= 1:
         load(args[0])
-
-    new_path = os.path.abspath(os.path.dirname(__file__))
-    os.chdir(new_path)
 
     todo = Queue()
     results = Queue()
