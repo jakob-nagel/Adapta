@@ -1,10 +1,8 @@
 # Adapta - An Advanced Audio Player with Tempo Adjustment
 
 I have created Adapta as part of my master thesis. A description and
-documentation of Adapta can be found in the thesis.
-
-The current version of the software is 1.0.0. A complete and updated
-documentation of the source code is currently not available.
+documentation of Adapta can be found in the thesis. The current version of
+Adapta is 1.0.0.
 
 This project is licensed under the terms of the GNU General Public License v3.0
 with the exemption of the following files:
