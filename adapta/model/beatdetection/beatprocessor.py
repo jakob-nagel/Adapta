@@ -29,6 +29,7 @@ class BeatProcessor(SequentialProcessor):
         self._results = results
 
     def run(self):
+        """Start continuously estimating beat positions."""
         while True:
             tasks = self._todo.get()
             for name, audio in tasks:

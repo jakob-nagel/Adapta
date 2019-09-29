@@ -1,4 +1,6 @@
 def singleton(cls):
+    """Singleton class decorator."""
+
     cls._instance = None
 
     def new(func):

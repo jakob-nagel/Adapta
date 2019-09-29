@@ -12,6 +12,7 @@ class Tempo(Automation):
     class Node(Automation.Node):
         @property
         def source_bpm(self):
+            """Original bpm."""
             if self._master is None:
                 return self._values
             return self._master.bpm
@@ -46,7 +47,8 @@ class Tempo(Automation):
     @property
     def num_segments(self):
         return max(track.position + track.num_segments
-                   for track in self._parent._tracks.values() if track.initialized)
+                   for track in self._parent._tracks.values()
+                   if track.initialized)
 
     def argtypes(self):
         return str, str

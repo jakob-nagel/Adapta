@@ -8,12 +8,15 @@ with open(default) as jsonfile:
 
 
 def load(path):
+    """Load new settings."""
     with open(path) as jsonfile:
         for name, value in json.load(jsonfile).items():
             _settings[name].update(value)
 
 
 def _getter(name):
+    """Helper function for use_settings decorator."""
+
     def getter(self):
         value = _settings[self.__class__.__name__][name]
         if isinstance(value, str) and value[0] == '<' and value[-1] == '>':
@@ -24,6 +27,11 @@ def _getter(name):
 
 
 def use_settings(cls):
+    """Class decorator to determine that some properties are defined in the
+    default settings file.
+
+    """
+
     for name in _settings[cls.__name__]:
         setattr(cls, name, _getter(name))
     return cls

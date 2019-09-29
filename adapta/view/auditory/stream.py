@@ -33,10 +33,12 @@ class Stream_(pa.Stream):
         self._pyaudio.terminate()
 
     def play(self, audio):
+        """Start writing to stream."""
         self.start_stream()
         self.write(audio.tobytes())
 
     def pause(self):
+        """Pause writing to stream."""
         self.stop_stream()
 
 
@@ -51,5 +53,6 @@ class Stream(Threadable, Stream_):
     sig_request = QtCore.Signal()
 
     def play(self, audio):
+        """Start writing to stream and request samples."""
         super().play(audio)
         self.sig_request.emit()

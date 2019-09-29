@@ -81,10 +81,15 @@ class Mix(Threadable):
         self.unlock()
 
     def receive_beats(self, track, beats):
+        """Updates contained tracks with newly computed beats."""
         self._tracks[track].init(beats)
         self.update()
 
     def update(self):
+        """Update beats and accordingly mix beat positions and sample indeces.
+
+        """
+
         self.lock()
         # load the tempo of the mix
         # and calculate the beat positions
@@ -260,6 +265,7 @@ class Mix(Threadable):
         return result
 
     def send_segment(self, index):
+        """Fetch audio samples of a segment and send it."""
         self.sig_segment.emit(self.segment(index))
 
     def render(self, path):

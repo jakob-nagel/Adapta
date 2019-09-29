@@ -44,6 +44,11 @@ class Track:
             self.init(times)
 
     def init(self, times):
+        """Post object-creation initialization. Intended to be called when
+        beats are finished to be detected.
+
+        """
+
         self._init(times, **self._params)
 
     def _init(self,
@@ -53,6 +58,7 @@ class Track:
               start=None,
               length=None,
               volume=None):
+        """Parses and applies track parameters."""
         if start is None:
             start = 0
         else:
@@ -98,6 +104,7 @@ class Track:
 
     @property
     def initialized(self):
+        """True iff track has been initialized."""
         return hasattr(self, '_audio')
 
     @property
@@ -107,6 +114,7 @@ class Track:
 
     @property
     def display(self):
+        """Samples to dispaly in the plot."""
         if self._disp.num_channels > 1:
             self._disp = self._disp.remix(1)
         return self._disp
@@ -133,6 +141,7 @@ class Track:
 
     @property
     def bpm(self):
+        """Average tempo in bpm."""
         return time_to_bpm(np.diff(self._times).mean())
 
     def to_local(self, index):

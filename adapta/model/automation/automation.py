@@ -6,6 +6,10 @@ from adapta.util import expspace, isarray
 
 
 def parse(path):
+    """Read and parse an automation specification.
+
+    """
+
     with open(path) as file:
         reader = csv.reader(file,
                             delimiter=' ',
@@ -46,33 +50,49 @@ class Automation:
                 self._values = self._values[0]
 
         def num_chunks(self, target):
+            """Number of units to the next node.
+
+            """
+
             return target._index - self._index
 
         # optional overwrite methods
 
         def values(self, *args):
+            """Get stored parameters.
+
+            """
+
             return args
 
         def process(self, target):
+            """Process parameters up to next node.
+
+            """
+
             return self._transition(target)
 
         # transition functions
 
         def constant(self, target):
+            """Constant interpolation."""
             shape = self.num_chunks(target)
             if isarray(self._values):
                 shape = (shape, 1)
             return np.tile(self._values, shape)
 
         def linear(self, target):
+            """Linear interpolation."""
             return np.linspace(self._values, target._values,
                                self.num_chunks(target), False)
 
         def leftexp(self, target):
+            """Left-bending exponential interpolation."""
             return expspace(self._values, target._values, 5,
                             self.num_chunks(target))
 
         def rightexp(self, target):
+            """Right-bending exponential interpolation."""
             return expspace(self._values, target._values, -5,
                             self.num_chunks(target))
 
@@ -80,6 +100,7 @@ class Automation:
         self._parent = parent
 
     def __call__(self, params):
+        """Process the whole audio effect mapping."""
         if len(params) == 0:
             return self.process(np.empty(0))
 
@@ -108,23 +129,33 @@ class Automation:
         return self.process(results)
 
     def argtypes(self):
+        """Determines the datatypes and number of the string input parameters.
+        """
         return ()
 
     @property
     def num_args(self):
+        """Number of expected parameters per node."""
         if isarray(self.argtypes()):
             return len(self.argtypes()) + 2
         return 3
 
     @property
     def num_segments(self):
+        """Number of segments of the parent mix or track."""
         return self._parent.num_segments
 
     def process(self, values):
+        """Interprete and process the nodes."""
         return values
 
 
 class PerSampleAutomation(Automation):
+    """Class changing Automation to apply audio effects on each parent sample
+    rather than each parent segment.
+
+    """
+
     class Node(Automation.Node):
         def num_chunks(self, target):
             return self._parent.num_samples(self._index, target._index)

@@ -77,18 +77,25 @@ def db_to_ratio(db):
 
 
 def bpm_to_time(bpm):
+    """Converts tempo in bpm to corresponding time between beats in seconds."""
     return 60 / bpm
 
 
 def time_to_bpm(time):
+    """Converts time between beats in seconds to corresponding tempo in bpm."""
     return 60 / time
 
 
 def isarray(x):
+    """Checks if argument is an array."""
     return all(hasattr(x, attr) for attr in ('__len__', '__getitem__'))
 
 
 def expspace(x, y, exp, num):
+    """Similar to np.linspace, exponentially interpolates between values.
+
+    """
+
     deltas = np.subtract(y, x)
     signs = np.sign(deltas)
     degrees = np.power(2.0, signs * exp)
@@ -98,6 +105,11 @@ def expspace(x, y, exp, num):
 
 
 def seconds_to_time(seconds, digits=3):
+    """Converts time in seconds float to time string in <minutes:seconds>
+    format.
+
+    """
+
     if seconds < 0:
         seconds = -seconds
         sign = '-'
@@ -109,6 +121,11 @@ def seconds_to_time(seconds, digits=3):
 
 
 def time_to_seconds(time):
+    """Converts time string in <minutes:seconds> format to time in seconds
+    float.
+
+    """
+
     split = time.split(':')
     if len(split) == 1:
         return float(time)
@@ -118,5 +135,6 @@ def time_to_seconds(time):
 
 
 def load_beats(path):
+    """Load beat positions from text file."""
     return np.loadtxt(path, converters={0: time_to_seconds}, usecols=0,
                       encoding='latin1')

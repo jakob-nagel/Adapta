@@ -47,22 +47,27 @@ class Player(Threadable):
 
     @property
     def samples_per_chunk(self):
+        """Number of samples per chunk to send."""
         return round_(self.sample_rate / self.update_freq * self.num_channels)
 
     @property
     def position(self):
+        """Playback position."""
         return self._position
 
     @property
     def playing(self):
+        """True iff currently playing back."""
         return (self._outstate == State.awaiting or
                 self._outstate == State.scheduled)
 
     def update(self, mix):
+        """Update with new mix."""
         self._mix = mix
         self.stop()
 
     def toggle_play(self):
+        """Toggle playback."""
         if self._outstate == State.blocking:
             self._play()
         else:
@@ -70,17 +75,20 @@ class Player(Threadable):
         self._emit_state()
 
     def _play(self):
+        """Start playback."""
         if self._buffer.filled >= self.samples_per_chunk:
             self._send()
         else:
             self._outstate = State.scheduled
 
     def send_samples(self):
+        """Send samples to output unit."""
         if self._outstate == State.awaiting:
             self._outstate = State.blocking
             self._send()
 
     def _send(self):
+        """Send samples to play back."""
         if (self._outstate == State.blocking):
             self._outstate = State.awaiting
             samples = self._buffer.pop(self.samples_per_chunk)
@@ -90,6 +98,7 @@ class Player(Threadable):
             self._request()
 
     def _request(self):
+        """Request next mix segment to be computed."""
         self._mix.lock()
         if (self._instate == State.blocking and
                 self._index < self._mix.num_segments):
@@ -102,6 +111,7 @@ class Player(Threadable):
         self._mix.unlock()
 
     def receive(self, data):
+        """Receive computed mix samples."""
         if self._instate == State.awaiting:
             self._buffer.put(data.ravel())
             if self._outstate == State.scheduled:
@@ -111,6 +121,7 @@ class Player(Threadable):
         self._request()
 
     def _reset(self, index):
+        """Reset computed samples and move to specific playback position."""
         self._mix.lock()
         self._index = index
         self._position = self._mix.sample_indeces[index]
@@ -125,10 +136,12 @@ class Player(Threadable):
         self._mix.unlock()
 
     def stop(self):
+        """Stop playback and reset to start of mix."""
         self._outstate = State.blocking
         self._reset(0)
 
     def jump(self, sample_index):
+        """Jump to specific playback position."""
         self._mix.lock()
         index = np.searchsorted(
             self._mix.sample_indeces, sample_index, 'right')
@@ -143,6 +156,7 @@ class Player(Threadable):
         self._mix.unlock()
 
     def next_track(self):
+        """Jump to start of next track."""
         self._mix.lock()
         index = np.searchsorted(self._mix.sample_indeces,
                                 self._position, 'right') - 1
@@ -155,6 +169,7 @@ class Player(Threadable):
         self._mix.unlock()
 
     def previous_track(self):
+        """Jump to start of nearest previous track."""
         self._mix.lock()
         index = np.searchsorted(self._mix.sample_indeces,
                                 self._position, 'right') - 1
@@ -167,7 +182,9 @@ class Player(Threadable):
         self._mix.unlock()
 
     def _emit_position(self):
+        """Send playback position."""
         self.sig_position.emit(lambda: self.position)
 
     def _emit_state(self):
+        """Send playback state."""
         self.sig_state.emit(lambda: self.playing)

@@ -28,6 +28,7 @@ class Plot(pg.PlotWidget):
         self.scene().sigMouseClicked.connect(self.mouse_clicked)
 
     def mouse_clicked(self, evt):
+        """Handle mouse click event."""
         if evt.button() == 1:
             x = self.getViewBox().mapSceneToView(evt.pos()).x()
             self.sig_mouse_clicked.emit(x)
@@ -86,9 +87,11 @@ class Plot(pg.PlotWidget):
         mix.unlock()
 
     def move_cursor(self, dx):
+        """Move cursor by specified distance."""
         if self._cursor is not None:
             self._cursor.move(dx)
 
     def move_cursor_to(self, x):
+        """Move cursor to specified value."""
         if self._cursor is not None:
             self._cursor.setValue(x)

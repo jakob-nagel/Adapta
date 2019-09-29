@@ -23,4 +23,5 @@ class Cursor(pg.InfiniteLine):
         plot.addItem(self)
 
     def move(self, dx):
+        """Move cursor by specified distance."""
         self.setValue(self.value() + dx)

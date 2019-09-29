@@ -42,6 +42,10 @@ class Window(QtWidgets.QMainWindow):
         self.init_ui()
 
     def load_icons(self):
+        """Prepares the icons for the playback buttons.
+
+        """
+
         icon_names = ['skip_forward', 'pause', 'play', 'skip_backward', 'stop']
         self._icons = {}
         for name in icon_names:
@@ -132,6 +136,10 @@ class Window(QtWidgets.QMainWindow):
         self.setWindowTitle('AdAPTA')
 
     def insert_widget(self, widget, position=0):
+        """Adds a widget to the window.
+
+        """
+
         self._lyt_main.insertWidget(position, widget)
 
     def show_open_dialog(self):
@@ -147,15 +155,27 @@ class Window(QtWidgets.QMainWindow):
             self.sig_load.emit(path)
 
     def show_render_dialog(self):
+        """Opens a file dialog to render the mix to a file.
+
+        """
+
         path, _ = QtWidgets.QFileDialog.getSaveFileName(
             self, 'Render', filter='*.wav')
         if path:
             self.sig_render_to.emit(path)
 
     def enable_controls(self):
+        """Enables the playback controls.
+
+        """
+
         for item in self._disabled:
             item.setEnabled(True)
 
     def set_play_icon(self, show_play=True):
+        """Updates the icon of the play/pause button.
+
+        """
+
         icon = 'play' if show_play else 'pause'
         self._btn_toggle_play.setIcon(self._icons[icon])

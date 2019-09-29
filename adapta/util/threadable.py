@@ -15,13 +15,16 @@ class Threadable(QtCore.QObject):
             self._thread.quit()
 
     def create_thread(self):
+        """Create own thread."""
         self._thread = QtCore.QThread()
         self.moveToThread(self._thread)
         self._thread.start()
         return self._thread
 
     def lock(self):
+        """Disable access from other sources."""
         self._mutex.lock()
 
     def unlock(self):
+        """Enable access from other sources."""
         self._mutex.unlock()

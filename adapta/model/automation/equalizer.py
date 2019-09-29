@@ -20,6 +20,7 @@ class Equalizer(Automation):
 
     @staticmethod
     def intermediate(f_s, f_c, G, Q=None):
+        """Intermediate shelf filter parameters."""
         if Q is None:
             Q = 1 / math.sqrt(2)
 
@@ -32,6 +33,7 @@ class Equalizer(Automation):
 
     @staticmethod
     def low_shelf(A, S, C, beta):
+        """Low shelf filter implementation."""
         Ap = A + 1
         Am = A - 1
         gamma = beta * S
@@ -47,6 +49,7 @@ class Equalizer(Automation):
 
     @staticmethod
     def high_shelf(A, S, C, beta):
+        """High shelf filter implementation."""
         Ap = A + 1
         Am = A - 1
         gamma = beta * S
@@ -61,12 +64,14 @@ class Equalizer(Automation):
         return np.divide((b_0, b_1, b_2, a_0, a_1, a_2), a_0)
 
     def reset_delays(self):
+        """Reset all filter delays."""
         shape = [2, 2]
         if self._parent.audio.num_channels > 1:
             shape.append(self._parent.audio.num_channels)
         self.zi = np.zeros(shape)
 
     def apply_filter(self, array, gain_bass, gain_mid, gain_treble):
+        """Apply filters to achieve 3-band equalization."""
         gain_bass -= gain_mid
         gain_treble -= gain_mid
         low = Equalizer.low_shelf(

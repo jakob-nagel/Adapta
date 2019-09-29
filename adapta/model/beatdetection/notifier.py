@@ -17,6 +17,7 @@ class Notifier(Threadable):
         self._results = results
 
     def run(self):
+        """Start continuously waiting for newly detected beats."""
         while True:
             name, beats = self._results.get()
             self.sig_send.emit(name, beats)
